@@ -8,5 +8,10 @@ Models should be an array of Model `{tab: TabModel, panel: PanelModel}`
 
 TabModel and PanelModel could be an object with renderer, or Component itself.
 
-### test
+### Examples
+Model as Object and Renderer: [see this](https://github.com/FourwingsY/react-rtab/blob/master/examples/withModel/app.js#L13)
+
+Model as Component: [see this](https://github.com/FourwingsY/react-rtab/blob/master/examples/withComponent/app.js#L13)
+
+### Run Examples
 `npm run examples`, `open localhost:8080`
