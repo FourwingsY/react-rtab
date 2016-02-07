@@ -23,10 +23,18 @@ class Rtab extends React.Component {
       return <span>{model.tab}</span>
     },
     panelRenderer: (model) => {
+      // Check panel is React.Component's instance or not
       if (model.panel.type && model.panel.type.prototype instanceof React.Component) {
         return model.panel
       }
-      throw Error("Have to set panelRenderer or model.panel as React.Component")
+      // Check panel is React.Component's subclass or not
+      try {
+        let Panel = model.panel
+        return <Panel {...model} />
+      } catch(err) {
+        // There is no panelRenderer, or Incompatible model.panel
+        throw Error("Have to set panelRenderer or set model.panel as React.Component or Component Instance")
+      }
     },
     tabPosition: "top"
   };
@@ -43,6 +51,7 @@ class Rtab extends React.Component {
 
   renderTabs = () => {
     let tabs = this.props.models.map((model, idx) => {
+      model._idx = idx
       return (
         <li
           key={idx}

@@ -5,14 +5,14 @@ import Rtab from 'react-rtab'
 class App extends React.Component {
   render() {
     return (
-      <Model />
+      <RendererTab />
     )
   }
 }
 
-class Model extends React.Component {
+class RendererTab extends React.Component {
   render() {
-    let tabModels = [{
+    let models = [{
       tab: "Tab 1",
       panel: [{
         title: "Hello",
@@ -42,7 +42,7 @@ class Model extends React.Component {
     }
     return (
       <Rtab
-        models={tabModels}
+        models={models}
         panelRenderer={panelRenderer}
         tabRenderer={tabRenderer}
         tabPosition="top"
