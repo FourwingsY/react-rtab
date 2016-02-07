@@ -1,22 +1,21 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+const autoprefixer = require('autoprefixer')
+const precss = require('precss')
 
 module.exports = {
-  entry: './app/index.js',
+  entry: './src/Rtab.js',
   output: {
-    filename: 'app.js'
+    filename: './dist/react-rtab.js'
   },
   module: {
     loaders: [
-      {test: /\.js$/, loader: 'babel', exclude: /node_modules/, include: /app/}
+      {test: /\.js$/, loader: 'babel', exclude: /node_modules/, include: /src/},
+      {test: /\.css$/, loader: 'style-loader!css-loader!postcss-loader'},
     ]
   },
   resolve: {
     extensions: ['', '.js']
   },
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: 'app/index.html',
-      inject: 'body'
-    })
-  ]
+  postcss: function () {
+    return [autoprefixer, precss];
+  }
 };

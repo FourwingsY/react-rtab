@@ -1,6 +1,12 @@
-# react-start
-Basic React project structure and build settings
-Based on Webpack, babel with ES2015
+# react-rtab
+React tab-panel component.
+
+### Description
+react-rtab use Models to rendering tab component.
+
+Models should be an array of Model `{tab: TabModel, panel: PanelModel}`
+
+TabModel and PanelModel could be an object with renderer, or Component itself.
 
 ### test
-`npm start`, `open localhost:8080`
+`npm run examples`, `open localhost:8080`
