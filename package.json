@@ -6,7 +6,8 @@
   "scripts": {
     "start": "webpack-dev-server --inline",
     "build": "babel src/Rtab.js --out-file dist/Rtab.js",
-    "examples": "webpack-dev-server --config ./examples/webpack.config.js --inline "
+    "examples": "webpack-dev-server --config ./examples/webpack.config.js --inline",
+    "build-exs": "webpack --config ./examples/webpack.config.js"
   },
   "repository": {
     "type": "git",
