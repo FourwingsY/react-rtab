@@ -2,7 +2,7 @@
 React tab-panel component.
 
 ### Examples
-see [FourwingsY.github.io/react-rtab](FourwingsY.github.io/react-rtab)
+see [fourwingsy.github.io/react-rtab](http://fourwingsy.github.io/react-rtab)
 
 ### Description
 react-rtab use Models to rendering tab component.
