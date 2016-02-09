@@ -1,8 +1,6 @@
 import React from 'react'
 import cn from 'classnames'
 
-import '../styles/bootstrap-style.css'
-
 class Rtab extends React.Component {
   static propTypes = {
     models: React.PropTypes.arrayOf(
@@ -22,7 +20,7 @@ class Rtab extends React.Component {
     tabRenderer: (model) => {
       return <span>{model.tab}</span>
     },
-    panelRenderer: (model) => {
+    panelRenderer: (model, idx) => {
       // Check panel is React.Component's instance or not
       if (model.panel.type && model.panel.type.prototype instanceof React.Component) {
         return model.panel
@@ -67,16 +65,16 @@ class Rtab extends React.Component {
 
   renderPanel = () => {
     let model = this.props.models[this.state.activeTabIndex]
-    let activePanel = this.props.panelRenderer(model)
+    let activePanel = this.props.panelRenderer(model, this.state.activeTabIndex)
     return activePanel
   };
 
   renderPanels = () => {
     return this.props.models.map((model, idx) => {
       if (idx == this.state.activeTabIndex) {
-        return <div key={idx} className="panel">{this.props.panelRenderer(model)}</div>
+        return <div key={idx} className="panel">{this.props.panelRenderer(model, idx)}</div>
       } else {
-        return <div key={idx} className="panel inactive">{this.props.panelRenderer(model)}</div>
+        return <div key={idx} className="panel inactive">{this.props.panelRenderer(model, idx)}</div>
       }
     })
   };

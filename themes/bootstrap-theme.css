@@ -19,6 +19,9 @@ body {
       border: 1px solid $border-color;
       background: white;
     }
+    p {
+      margin-bottom: 0;
+    }
   }
   li:not(.active):hover {
     background: #eee;
@@ -66,7 +69,6 @@ body {
   & + .panelContainer {
     display: inline-block;
     vertical-align: top;
-    border-top: 1px solid $border-color;
     border-left: 1px solid $border-color;
     margin-left: -1px;
   }
