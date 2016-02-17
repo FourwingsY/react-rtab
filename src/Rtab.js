@@ -17,18 +17,18 @@ class Rtab extends React.Component {
   };
 
   static defaultProps = {
-    tabRenderer: (model) => {
-      return <span>{model.tab}</span>
+    tabRenderer: (tabModel, idx) => {
+      return <span>{tabModel}</span>
     },
-    panelRenderer: (model, idx) => {
+    panelRenderer: (panelModel, idx) => {
       // Check panel is React.Component's instance or not
-      if (model.panel.type && model.panel.type.prototype instanceof React.Component) {
-        return model.panel
+      if (panelModel.type && panelModel.type.prototype instanceof React.Component) {
+        return panelModel
       }
       // Check panel is React.Component's subclass or not
       try {
-        let Panel = model.panel
-        return <Panel {...model} />
+        let Panel = panelModel
+        return <Panel />
       } catch(err) {
         // There is no panelRenderer, or Incompatible model.panel
         throw Error("Have to set panelRenderer or set model.panel as React.Component or Component Instance")
@@ -56,7 +56,7 @@ class Rtab extends React.Component {
           onClick={this.setActiveTab.bind(null, idx)}
           className={cn({active: this.state.activeTabIndex == idx})}
         >
-          {this.props.tabRenderer(model)}
+          {this.props.tabRenderer(model.tab, idx)}
         </li>
       )
     })
@@ -65,16 +65,16 @@ class Rtab extends React.Component {
 
   renderPanel = () => {
     let model = this.props.models[this.state.activeTabIndex]
-    let activePanel = this.props.panelRenderer(model, this.state.activeTabIndex)
+    let activePanel = this.props.panelRenderer(model.panel, this.state.activeTabIndex)
     return activePanel
   };
 
   renderPanels = () => {
     return this.props.models.map((model, idx) => {
       if (idx == this.state.activeTabIndex) {
-        return <div key={idx} className="panel">{this.props.panelRenderer(model, idx)}</div>
+        return <div key={idx} className="panel">{this.props.panelRenderer(model.panel, idx)}</div>
       } else {
-        return <div key={idx} className="panel inactive">{this.props.panelRenderer(model, idx)}</div>
+        return <div key={idx} className="panel inactive">{this.props.panelRenderer(model.panel, idx)}</div>
       }
     })
   };

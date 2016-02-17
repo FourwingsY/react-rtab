@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import Rtab from 'react-rtab'
 
-export default class InstanceTab extends React.Component {
+const code = `class InstanceTab extends React.Component {
   render() {
     let models = [{
       tab: "Page 1",
@@ -16,6 +16,27 @@ export default class InstanceTab extends React.Component {
         models={models}
         preserve
       />
+    )
+  }
+}`
+export default class InstanceTab extends React.Component {
+  render() {
+    let models = [{
+      tab: "Page 1",
+      panel: <Page1 />
+    }, {
+      tab: "Page 2",
+      panel: <Page2 />
+    }]
+    return (
+      <div>
+        <Rtab
+          models={models}
+          preserve
+        />
+        <h3>Example Code</h3>
+        <pre><code>{code}</code></pre>
+      </div>
     )
   }
 }
