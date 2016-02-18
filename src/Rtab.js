@@ -34,6 +34,16 @@ class Rtab extends React.Component {
     activeTabIndex: this.props.activeTabIndex || 0
   };
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.models.length == 0) {
+      this.setState({activeTabIndex: 0})
+      return
+    }
+    if (nextProps.models.length <= this.state.activeTabIndex) {
+      this.setState({activeTabIndex: nextProps.models.length-1})
+    }
+  }
+
   setActiveTab = (index) => {
     this.setState({
       activeTabIndex: index
