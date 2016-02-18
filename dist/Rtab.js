@@ -1,10 +1,10 @@
 'use strict';
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _react = require('react');
 
@@ -13,8 +13,6 @@ var _react2 = _interopRequireDefault(_react);
 var _classnames = require('classnames');
 
 var _classnames2 = _interopRequireDefault(_classnames);
-
-require('../styles/bootstrap-style.css');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -54,13 +52,13 @@ var Rtab = function (_React$Component) {
             onClick: _this.setActiveTab.bind(null, idx),
             className: (0, _classnames2.default)({ active: _this.state.activeTabIndex == idx })
           },
-          _this.props.tabRenderer(model)
+          _this.props.tabRenderer(model.tab, idx)
         );
       });
       return tabs;
     }, _this.renderPanel = function () {
       var model = _this.props.models[_this.state.activeTabIndex];
-      var activePanel = _this.props.panelRenderer(model);
+      var activePanel = _this.props.panelRenderer(model.panel, _this.state.activeTabIndex);
       return activePanel;
     }, _this.renderPanels = function () {
       return _this.props.models.map(function (model, idx) {
@@ -68,13 +66,13 @@ var Rtab = function (_React$Component) {
           return _react2.default.createElement(
             'div',
             { key: idx, className: 'panel' },
-            _this.props.panelRenderer(model)
+            _this.props.panelRenderer(model.panel, idx)
           );
         } else {
           return _react2.default.createElement(
             'div',
             { key: idx, className: 'panel inactive' },
-            _this.props.panelRenderer(model)
+            _this.props.panelRenderer(model.panel, idx)
           );
         }
       });
@@ -82,6 +80,17 @@ var Rtab = function (_React$Component) {
   }
 
   _createClass(Rtab, [{
+    key: 'componentWillReceiveProps',
+    value: function componentWillReceiveProps(nextProps) {
+      if (nextProps.models.length == 0) {
+        this.setState({ activeTabIndex: 0 });
+        return;
+      }
+      if (nextProps.models.length <= this.state.activeTabIndex) {
+        this.setState({ activeTabIndex: nextProps.models.length - 1 });
+      }
+    }
+  }, {
     key: 'render',
     value: function render() {
       return _react2.default.createElement(
@@ -111,31 +120,24 @@ Rtab.propTypes = {
   })).isRequired,
   panelRenderer: _react2.default.PropTypes.func,
   tabRenderer: _react2.default.PropTypes.func,
-  tabPosition: _react2.default.PropTypes.oneOf(["top", "bottom", "left", "right"]),
+  tabPosition: _react2.default.PropTypes.oneOf(["top", "left"]),
   activeTabIndex: _react2.default.PropTypes.number,
   preserve: _react2.default.PropTypes.bool
 };
 Rtab.defaultProps = {
-  tabRenderer: function tabRenderer(model) {
+  tabRenderer: function tabRenderer(tabModel, idx) {
     return _react2.default.createElement(
       'span',
       null,
-      model.tab
+      tabModel
     );
   },
-  panelRenderer: function panelRenderer(model) {
+  panelRenderer: function panelRenderer(panelModel, idx) {
     // Check panel is React.Component's instance or not
-    if (model.panel.type && model.panel.type.prototype instanceof _react2.default.Component) {
-      return model.panel;
+    if (panelModel.type && panelModel.type.prototype instanceof _react2.default.Component) {
+      return panelModel;
     }
-    // Check panel is React.Component's subclass or not
-    try {
-      var Panel = model.panel;
-      return _react2.default.createElement(Panel, model);
-    } catch (err) {
-      // There is no panelRenderer, or Incompatible model.panel
-      throw Error("Have to set panelRenderer or set model.panel as React.Component or Component Instance");
-    }
+    throw Error("Have to set panelRenderer or set model.panel as ReactElement");
   },
   tabPosition: "top"
 };
