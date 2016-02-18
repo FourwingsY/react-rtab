@@ -1,8 +1,8 @@
 {
   "name": "react-rtab",
-  "version": "0.0.1",
-  "description": "React tab-panel component",
-  "main": "src/index.js",
+  "version": "0.1.0",
+  "description": "React component for Repeatedly, Rendering Tabs",
+  "main": "dist/Rtab.js",
   "scripts": {
     "start": "webpack-dev-server --inline",
     "build": "babel src/Rtab.js --out-file dist/Rtab.js",
@@ -13,7 +13,7 @@
     "url": "git+https://github.com/FourwingsY/react-rtab.git"
   },
   "keywords": [
-    "react"
+    "react", "tabs"
   ],
   "author": "YG (fourwingsy@gmail.com)",
   "bugs": {

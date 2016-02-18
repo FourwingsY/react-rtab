@@ -11,7 +11,7 @@ class Rtab extends React.Component {
     ).isRequired,
     panelRenderer: React.PropTypes.func,
     tabRenderer: React.PropTypes.func,
-    tabPosition: React.PropTypes.oneOf(["top", "bottom", "left", "right"]),
+    tabPosition: React.PropTypes.oneOf(["top", "left"]),
     activeTabIndex: React.PropTypes.number,
     preserve: React.PropTypes.bool
   };
@@ -25,14 +25,7 @@ class Rtab extends React.Component {
       if (panelModel.type && panelModel.type.prototype instanceof React.Component) {
         return panelModel
       }
-      // Check panel is React.Component's subclass or not
-      try {
-        let Panel = panelModel
-        return <Panel />
-      } catch(err) {
-        // There is no panelRenderer, or Incompatible model.panel
-        throw Error("Have to set panelRenderer or set model.panel as React.Component or Component Instance")
-      }
+      throw Error("Have to set panelRenderer or set model.panel as ReactElement")
     },
     tabPosition: "top"
   };
