@@ -50,6 +50,13 @@ class Rtab extends React.Component {
     })
   };
 
+  getPanel = (model) => {
+    if (typeof model.panel == "function") {
+      return model.panel()
+    }
+    return model.panel
+  };
+
   renderTabs = () => {
     let tabs = this.props.models.map((model, idx) => {
       model._idx = idx
@@ -71,16 +78,18 @@ class Rtab extends React.Component {
       return this.renderPanels()
     }
     let model = this.props.models[this.state.activeTabIndex]
-    let activePanel = this.props.panelRenderer(model.panel, this.state.activeTabIndex)
+    let panel = this.getPanel(model)
+    let activePanel = this.props.panelRenderer(panel, this.state.activeTabIndex)
     return activePanel
   };
 
   renderPanels = () => {
     return this.props.models.map((model, idx) => {
+      let panel = this.getPanel(model)
       if (idx == this.state.activeTabIndex) {
-        return <div key={idx} className="panel active">{this.props.panelRenderer(model.panel, idx)}</div>
+        return <div key={idx} className="panel active">{this.props.panelRenderer(panel, idx)}</div>
       } else {
-        return <div key={idx} className="panel inactive">{this.props.panelRenderer(model.panel, idx)}</div>
+        return <div key={idx} className="panel inactive">{this.props.panelRenderer(panel, idx)}</div>
       }
     })
   };

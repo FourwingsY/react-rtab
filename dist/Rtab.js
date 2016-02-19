@@ -42,6 +42,11 @@ var Rtab = function (_React$Component) {
       _this.setState({
         activeTabIndex: index
       });
+    }, _this.getPanel = function (model) {
+      if (typeof model.panel == "function") {
+        return model.panel();
+      }
+      return model.panel;
     }, _this.renderTabs = function () {
       var tabs = _this.props.models.map(function (model, idx) {
         model._idx = idx;
@@ -57,22 +62,27 @@ var Rtab = function (_React$Component) {
       });
       return tabs;
     }, _this.renderPanel = function () {
+      if (_this.props.preserve) {
+        return _this.renderPanels();
+      }
       var model = _this.props.models[_this.state.activeTabIndex];
-      var activePanel = _this.props.panelRenderer(model.panel, _this.state.activeTabIndex);
+      var panel = _this.getPanel(model);
+      var activePanel = _this.props.panelRenderer(panel, _this.state.activeTabIndex);
       return activePanel;
     }, _this.renderPanels = function () {
       return _this.props.models.map(function (model, idx) {
+        var panel = _this.getPanel(model);
         if (idx == _this.state.activeTabIndex) {
           return _react2.default.createElement(
             'div',
-            { key: idx, className: 'panel' },
-            _this.props.panelRenderer(model.panel, idx)
+            { key: idx, className: 'panel active' },
+            _this.props.panelRenderer(panel, idx)
           );
         } else {
           return _react2.default.createElement(
             'div',
             { key: idx, className: 'panel inactive' },
-            _this.props.panelRenderer(model.panel, idx)
+            _this.props.panelRenderer(panel, idx)
           );
         }
       });
@@ -104,7 +114,7 @@ var Rtab = function (_React$Component) {
         _react2.default.createElement(
           'div',
           { className: (0, _classnames2.default)("panelContainer", { preserve: this.props.preserve }) },
-          this.props.preserve ? this.renderPanels() : this.renderPanel()
+          this.renderPanel()
         )
       );
     }
@@ -133,7 +143,7 @@ Rtab.defaultProps = {
     );
   },
   panelRenderer: function panelRenderer(panelModel, idx) {
-    // Check panel is React.Component's instance or not
+    // Check panelModel is React.Component's instance or not
     if (panelModel.type && panelModel.type.prototype instanceof _react2.default.Component) {
       return panelModel;
     }
