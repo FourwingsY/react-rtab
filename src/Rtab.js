@@ -21,7 +21,7 @@ class Rtab extends React.Component {
       return <span>{tabModel}</span>
     },
     panelRenderer: (panelModel, idx) => {
-      // Check panel is React.Component's instance or not
+      // Check panelModel is React.Component's instance or not
       if (panelModel.type && panelModel.type.prototype instanceof React.Component) {
         return panelModel
       }
@@ -67,6 +67,9 @@ class Rtab extends React.Component {
   };
 
   renderPanel = () => {
+    if (this.props.preserve) {
+      return this.renderPanels()
+    }
     let model = this.props.models[this.state.activeTabIndex]
     let activePanel = this.props.panelRenderer(model.panel, this.state.activeTabIndex)
     return activePanel
@@ -75,12 +78,13 @@ class Rtab extends React.Component {
   renderPanels = () => {
     return this.props.models.map((model, idx) => {
       if (idx == this.state.activeTabIndex) {
-        return <div key={idx} className="panel">{this.props.panelRenderer(model.panel, idx)}</div>
+        return <div key={idx} className="panel active">{this.props.panelRenderer(model.panel, idx)}</div>
       } else {
         return <div key={idx} className="panel inactive">{this.props.panelRenderer(model.panel, idx)}</div>
       }
     })
   };
+
   render() {
     return (
       <div className="Rtab">
@@ -88,10 +92,7 @@ class Rtab extends React.Component {
           {this.renderTabs()}
         </ol>
         <div className={cn("panelContainer", {preserve: this.props.preserve})}>
-          {this.props.preserve
-            ? this.renderPanels()
-            : this.renderPanel()
-          }
+          {this.renderPanel()}
         </div>
       </div>
     )
