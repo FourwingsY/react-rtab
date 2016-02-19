@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom'
 import Rtab from 'react-rtab'
 
 import RendererTabs from './withRenderer'
-import ComponentTabs from './withComponent'
 import InstanceTabs from './withInstance'
+import FunctionTabs from './withFunction'
 import ComplexTabs from './complexTabs'
 
 import '../themes/bootstrap-theme.css'
@@ -12,14 +12,14 @@ import '../themes/bootstrap-theme.css'
 class App extends React.Component {
   render() {
     let models = [{
-      tab: "Renderer",
+      tab: "Renderer, vertical",
       panel: <RendererTabs />
-    },{
-      tab: "Component Class, vertical tab",
-      panel: <ComponentTabs />
     },{
       tab: "Instance",
       panel: <InstanceTabs />
+    },{
+      tab: "Function Model",
+      panel: <FunctionTabs />
     },{
       tab: "Binding",
       panel: <ComplexTabs />

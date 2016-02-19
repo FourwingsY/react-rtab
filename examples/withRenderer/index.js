@@ -37,6 +37,7 @@ const code = `class RendererTab extends React.Component {
         models={models}
         panelRenderer={panelRenderer}
         tabRenderer={tabRenderer}
+        tabPosition="left"
       />
     )
   }
