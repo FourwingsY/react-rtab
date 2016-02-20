@@ -1,6 +1,6 @@
 {
   "name": "react-rtab",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "React component for Repeatedly, Rendering Tabs",
   "main": "dist/Rtab.js",
   "scripts": {
@@ -13,7 +13,8 @@
     "url": "git+https://github.com/FourwingsY/react-rtab.git"
   },
   "keywords": [
-    "react", "tabs"
+    "react",
+    "tabs"
   ],
   "author": "YG (fourwingsy@gmail.com)",
   "bugs": {
