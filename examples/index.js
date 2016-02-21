@@ -10,8 +10,8 @@ import ComplexTabs from './complexTabs'
 import '../themes/bootstrap-theme.css'
 
 class App extends React.Component {
-  render() {
-    let models = [{
+  state = {
+    models: [{
       tab: "Renderer, vertical",
       panel: <RendererTabs />
     },{
@@ -24,9 +24,15 @@ class App extends React.Component {
       tab: "Binding",
       panel: <ComplexTabs />
     }]
+  };
+  render() {
     return (
       <div>
-        <Rtab models={models} panelRenderer={(panelModel) => panelModel} />
+        <Rtab
+          models={this.state.models}
+          draggable onDrag={(models) => this.setState({models: models})}
+          panelRenderer={(panelModel) => panelModel}
+       />
       </div>
     )
   }

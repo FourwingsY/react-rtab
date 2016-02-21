@@ -32,24 +32,17 @@
         <hr>
 
         <section id="main_content">
-<h1>
-  <a id="react-rtab" class="anchor" href="#react-rtab" aria-hidden="true">
-    <span aria-hidden="true" class="octicon octicon-link"></span>
-  </a>
-  react-rtab
-</h1>
-
+<h1>React-rtab</h1>
 <p>React tab-panel component.</p>
 
-<h3>
-<a id="description" class="anchor" href="#description" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Description</h3>
+<h3>Description</h3>
+<p>react-rtab use Models to repeatedly rendering tab component.</p>
 
-<p>react-rtab use Models to rendering tab component.</p>
+<p>Models should be an array of Model <code>{tab: TabModel, panel: PanelModel}</code><br>
+  TabModel could be an object with renderer, or plain text.<br>
+  PanelModel could be an object with renderer, ReactElement, or getter function.</p>
 
-<p>Models should be an array of Model <code>{tab: TabModel, panel: PanelModel}</code></p>
-
-<p>TabModel could be an object with renderer, or plain text.
-PanelModel could be an object with renderer, Component, or Component instance.</p>
+<p>With a draggable options and onDrag function, Tabs become draggable. Try to drag tabs below. Codes are <a href="https://github.com/FourwingsY/react-rtab/blob/gh-pages/examples/index.js">here</a></p>
 
         </section>
         <section id="examples"></section>

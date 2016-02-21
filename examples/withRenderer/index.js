@@ -79,6 +79,7 @@ export default class RendererTab extends React.Component {
           models={models}
           panelRenderer={panelRenderer}
           tabRenderer={tabRenderer}
+          tabPosition="left"
         />
         <h3>Example Code</h3>
         <pre><code>{code}</code></pre>

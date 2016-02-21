@@ -26,6 +26,9 @@ body {
   li:not(.active):hover {
     background: #eee;
   }
+  li.dragging{
+    border: 1px solid #337ab7;
+  }
 }
 
 .panelContainer {

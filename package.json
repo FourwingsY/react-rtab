@@ -4,7 +4,7 @@
   "description": "React tab-panel component",
   "main": "src/index.js",
   "scripts": {
-    "start": "webpack-dev-server --inline",
+    "start": "webpack-dev-server --inline --config webpack.example.config.js",
     "build": "babel src/Rtab.js --out-file dist/Rtab.js",
     "build-gh-pages": "webpack --config webpack.example.config.js"
   },
