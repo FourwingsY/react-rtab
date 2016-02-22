@@ -30,8 +30,9 @@ class App extends React.Component {
       <div>
         <Rtab
           models={this.state.models}
-          draggable onDrag={(models) => this.setState({models: models})}
           panelRenderer={(panelModel) => panelModel}
+          draggable closable
+          onChange={(models) => this.setState({models: models})}
        />
       </div>
     )

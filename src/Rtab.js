@@ -15,7 +15,8 @@ class Rtab extends React.Component {
     activeTabIndex: React.PropTypes.number,
     preserve: React.PropTypes.bool,
     draggable: React.PropTypes.bool,
-    onDrag: React.PropTypes.func
+    closable: React.PropTypes.bool,
+    onChange: React.PropTypes.func
   };
 
   static defaultProps = {
@@ -122,7 +123,14 @@ class Rtab extends React.Component {
       dragTo: null,
       prevTarget: null
     })
-    this.props.onDrag(models)
+    this.props.onChange(models)
+  };
+
+  onClose = (e) => {
+    let models = this.props.models
+    let idx = indexOfElement(e.target.parentElement)
+    models.splice(idx, 1)
+    this.props.onChange(models)
   };
 
   setActiveTab = (index) => {
@@ -141,10 +149,15 @@ class Rtab extends React.Component {
       onDragEnd: this.onDragEnd
     }
     if (this.props.draggable == true) {
-      if (typeof this.props.onDrag == 'function') {
+      if (typeof this.props.onChange == 'function') {
         draggableOptions = defaultDraggableOptions
       } else {
-        throw Error('to use draggable option, onDrag prop is needed')
+        throw Error('to use draggable option, onChange function is needed')
+      }
+    }
+    if (this.props.closable == true) {
+      if (typeof this.props.onChange !== 'function') {
+        throw Error('to use closable option, onChange function is needed')
       }
     }
     let tabs = models.map((model, idx) => {
@@ -155,6 +168,7 @@ class Rtab extends React.Component {
           className={cn('tab', {active: this.state.activeTabIndex == idx, dragging: this.state.dragTo == idx})}
           {...draggableOptions}>
           {this.props.tabRenderer(model.tab, idx)}
+          {this.props.closable ? <a className="close" onClick={this.onClose}></a> : null}
         </li>
       )
     })

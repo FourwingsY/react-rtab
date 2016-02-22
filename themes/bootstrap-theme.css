@@ -29,6 +29,12 @@ body {
   li.dragging{
     border: 1px solid #337ab7;
   }
+  li .close {
+    margin-left: 5px;
+    &::before {
+      content: '\00D7';
+    }
+  }
 }
 
 .panelContainer {
