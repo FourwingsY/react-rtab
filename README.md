@@ -8,9 +8,9 @@ React tab-panel component.
 see [fourwingsy.github.io/react-rtab](http://fourwingsy.github.io/react-rtab)
 
 ### Description
-react-rtab use Models to rendering tab component.
+React-rtab use Models to rendering tab component.
 
-the `R` in 'R'tab represents `repeatedly`, `rendered`
+the `R` in 'R'tab stands for `R`epeatedly, `R`endered models.
 
 Models should be an array of Model `{tab: TabModel, panel: PanelModel}`
 
@@ -21,7 +21,7 @@ PanelModel could be an `object with renderer`, `Getter Function` or `ReactElemen
 | Props | Type | Default value | Description |
 | ----- | ---- | ------------- | ----------- |
 | models | arrayOf(Model) | - | REQUIRED, contains data of tabs |
-| `Model` | shapeOf({<br>&nbsp;&nbsp;tab: TabModel, <br>&nbsp;&nbsp;panel: PanelModel,<br>&nbsp;&nbsp; ...etc<br>}) | - | Data Model for rendering a tab and panel |
+| `Model` | shapeOf({<br>&nbsp;&nbsp;tab: TabModel, <br>&nbsp;&nbsp;panel: PanelModel}) | - | Data Model for rendering a tab and panel |
 | `TabModel` | Object or string | - |  |
 | tabRenderer | (TabModel) => ReactElement | `(tabModel) => <span>{tabModel}</span>` | REQUIRED WHEN TabModel is an Object. If TabModel is string, tabRenderer will be it's default. |
 | `PanelModel` | Object, Getter function, or ReactElement  |  |  |
@@ -40,7 +40,7 @@ Inheritance might be one of your solution. This works on `v0.2.0` or later.
 
 Just Remember Two functions. `this.renderTabs()` and `this.renderPanel()`
 
-But alst rememeber this. Theming CSS will not work with your template. You have to write your own, new CSS.
+But also remember this. Theming CSS will not work with your template. You have to write your own, new CSS.
 
 ```javascript
 class OwnTabs extends Rtab {

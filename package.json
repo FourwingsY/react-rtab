@@ -13,8 +13,12 @@
     "url": "git+https://github.com/FourwingsY/react-rtab.git"
   },
   "keywords": [
+    "react-tabs",
+    "react-tab",
     "react",
-    "tabs"
+    "tabs",
+    "tab",
+    "panel"
   ],
   "author": "YG (fourwingsy@gmail.com)",
   "bugs": {
@@ -23,8 +27,7 @@
   "homepage": "https://github.com/FourwingsY/react-rtab#readme",
   "dependencies": {
     "classnames": "^2.2.3",
-    "react": "^0.14.7",
-    "react-dom": "^0.14.7"
+    "react": "^0.14.7"
   },
   "devDependencies": {
     "autoprefixer": "^6.3.1",
