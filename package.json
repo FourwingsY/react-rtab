@@ -1,19 +1,23 @@
 {
   "name": "react-rtab",
-  "version": "0.0.1",
-  "description": "React tab-panel component",
-  "main": "src/index.js",
+  "version": "0.1.1",
+  "description": "React component for Repeatedly, Rendering Tabs",
+  "main": "dist/react-rtab.js",
   "scripts": {
-    "start": "webpack-dev-server --inline --config webpack.example.config.js",
-    "build": "babel src/Rtab.js --out-file dist/Rtab.js",
-    "build-gh-pages": "webpack --config webpack.example.config.js"
+    "start": "webpack-dev-server --inline",
+    "build": "webpack"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/FourwingsY/react-rtab.git"
   },
   "keywords": [
-    "react"
+    "react-tabs",
+    "react-tab",
+    "react",
+    "tabs",
+    "tab",
+    "panel"
   ],
   "author": "YG (fourwingsy@gmail.com)",
   "bugs": {
@@ -22,8 +26,7 @@
   "homepage": "https://github.com/FourwingsY/react-rtab#readme",
   "dependencies": {
     "classnames": "^2.2.3",
-    "react": "^0.14.7",
-    "react-dom": "^0.14.7"
+    "react": "^0.14.7"
   },
   "devDependencies": {
     "autoprefixer": "^6.3.1",
@@ -34,6 +37,7 @@
     "babel-preset-react": "^6.3.13",
     "babel-preset-stage-1": "^6.3.13",
     "css-loader": "^0.23.1",
+    "extract-text-webpack-plugin": "^1.0.1",
     "html-webpack-plugin": "^2.7.2",
     "postcss-loader": "^0.8.0",
     "precss": "^1.4.0",

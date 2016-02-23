@@ -1,0 +1,86 @@
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.tabs {
+  position: relative;
+  z-index: 20;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.tabs li {
+  display: inline-block;
+  padding: 10px;
+  box-sizing: border-box;
+  background: white;
+  color: #337ab7;
+}
+.tabs li p {
+  margin-bottom: 0;
+}
+.tabs li.active {
+  border: 1px solid #ddd;
+  background: white;
+}
+.tabs li:not(.active):hover {
+  background: #eee;
+}
+.tabs li.dragging{
+  border: 1px solid #337ab7;
+}
+.tabs li .close {
+  margin-left: 5px
+}
+.tabs li .close::before {
+  content: '\D7';
+}
+
+.panelContainer {
+  position: relative;
+  padding: 10px;
+  z-index: 10;
+  background: white
+}
+
+.panelContainer.preserve .panel.inactive {
+  display: none;
+}
+
+
+.tabs.top li {
+  margin-right: 2px;
+  border-radius: 4px 4px 0 0
+}
+
+
+.tabs.top li.active {
+  border-bottom-color: transparent;
+}
+
+
+.tabs.top + .panelContainer {
+  border-top: 1px solid #ddd;
+  margin-top: -1px;
+}
+
+.tabs.left {
+  display: inline-block;
+}
+
+.tabs.left li {
+  display: block;
+  margin-bottom: 2px;
+  border-right: 1px solid #ddd;
+  border-radius: 4px 0 0 4px
+}
+
+.tabs.left li.active {
+  border-right-color: transparent;
+}
+
+.tabs.left + .panelContainer {
+  display: inline-block;
+  vertical-align: top;
+  border-left: 1px solid #ddd;
+  margin-left: -1px;
+}
