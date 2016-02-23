@@ -1,39 +1,38 @@
 $border-color: #ddd;
+$background-color: #fff;
 
 body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
+
+/* Basic style */
 .tabs {
   position: relative;
-  z-index: 20;
   margin: 0;
   padding: 0;
+  z-index: 20;
   list-style: none;
-  li {
-    display: inline-block;
+  .tab {
     padding: 10px;
     box-sizing: border-box;
-    background: white;
+    background: $background-color;
     color: #337ab7;
-    &.active {
-      border: 1px solid $border-color;
-      background: white;
-    }
-    p {
-      margin-bottom: 0;
+    .close {
+      margin-left: 5px;
+      &::before {
+        content: '\00D7';
+      }
     }
   }
-  li:not(.active):hover {
+  .tab.active {
+    border: 1px solid $border-color;
+    background: $background-color;
+  }
+  .tab:not(.active):hover {
     background: #eee;
   }
-  li.dragging{
+  .tab.dragging{
     border: 1px solid #337ab7;
-  }
-  li .close {
-    margin-left: 5px;
-    &::before {
-      content: '\00D7';
-    }
   }
 }
 
@@ -41,7 +40,7 @@ body {
   position: relative;
   padding: 10px;
   z-index: 10;
-  background: white;
+  background: $background-color;
   &.preserve {
     .panel.inactive {
       display: none;
@@ -49,9 +48,11 @@ body {
   }
 }
 
-
+/* TabPosition */
 .tabs.top {
-  li {
+  display: block;
+  .tab {
+    display: inline-block;
     margin-right: 2px;
     border-radius: 4px 4px 0 0;
     &.active {
@@ -66,7 +67,7 @@ body {
 
 .tabs.left {
   display: inline-block;
-  li {
+  .tab {
     display: block;
     margin-bottom: 2px;
     border-right: 1px solid $border-color;

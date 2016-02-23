@@ -194,7 +194,7 @@ class Rtab extends React.Component {
       if (idx == this.state.activeTabIndex) {
         return <div key={idx} className="panel active">{this.props.panelRenderer(panel, idx)}</div>
       } else {
-        return <div key={idx} className="panel inactive">{this.props.panelRenderer(panel, idx)}</div>
+        return <div key={idx} className="panel inactive" style={{display: 'none'}}>{this.props.panelRenderer(panel, idx)}</div>
       }
     })
   };

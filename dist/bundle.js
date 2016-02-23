@@ -19941,7 +19941,7 @@
 	        } else {
 	          return _react2.default.createElement(
 	            'div',
-	            { key: idx, className: 'panel inactive' },
+	            { key: idx, className: 'panel inactive', style: { display: 'none' } },
 	            _this.props.panelRenderer(panel, idx)
 	          );
 	        }

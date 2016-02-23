@@ -1,63 +1,61 @@
 body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
+
+/* Basic style */
 .tabs {
   position: relative;
-  z-index: 20;
   margin: 0;
   padding: 0;
+  z-index: 20;
   list-style: none;
 }
-.tabs li {
-  display: inline-block;
+.tabs .tab {
   padding: 10px;
   box-sizing: border-box;
-  background: white;
+  background: #fff;
   color: #337ab7;
 }
-.tabs li p {
-  margin-bottom: 0;
-}
-.tabs li.active {
-  border: 1px solid #ddd;
-  background: white;
-}
-.tabs li:not(.active):hover {
-  background: #eee;
-}
-.tabs li.dragging{
-  border: 1px solid #337ab7;
-}
-.tabs li .close {
+.tabs .tab .close {
   margin-left: 5px
 }
-.tabs li .close::before {
+.tabs .tab .close::before {
   content: '\D7';
+}
+.tabs .tab.active {
+  border: 1px solid #ddd;
+  background: #fff;
+}
+.tabs .tab:not(.active):hover {
+  background: #eee;
+}
+.tabs .tab.dragging{
+  border: 1px solid #337ab7;
 }
 
 .panelContainer {
   position: relative;
   padding: 10px;
   z-index: 10;
-  background: white
+  background: #fff
 }
 
 .panelContainer.preserve .panel.inactive {
   display: none;
 }
 
-
-.tabs.top li {
+/* TabPosition */
+.tabs.top {
+  display: block;
+}
+.tabs.top .tab {
+  display: inline-block;
   margin-right: 2px;
   border-radius: 4px 4px 0 0
 }
-
-
-.tabs.top li.active {
+.tabs.top .tab.active {
   border-bottom-color: transparent;
 }
-
-
 .tabs.top + .panelContainer {
   border-top: 1px solid #ddd;
   margin-top: -1px;
@@ -67,14 +65,14 @@ body {
   display: inline-block;
 }
 
-.tabs.left li {
+.tabs.left .tab {
   display: block;
   margin-bottom: 2px;
   border-right: 1px solid #ddd;
   border-radius: 4px 0 0 4px
 }
 
-.tabs.left li.active {
+.tabs.left .tab.active {
   border-right-color: transparent;
 }
 

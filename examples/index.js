@@ -7,7 +7,7 @@ import InstanceTabs from './withInstance'
 import FunctionTabs from './withFunction'
 import ComplexTabs from './complexTabs'
 
-import '../themes/bootstrap-theme.css'
+import '../themes/bootstrap-theme.pcss'
 
 class App extends React.Component {
   state = {
