@@ -139,7 +139,8 @@ class Rtab extends React.Component {
     })
   };
 
-  renderTabs = (models) => {
+  renderTabs = () => {
+    let models = this.getModels()
     let draggableOptions = {}
     let defaultDraggableOptions = {
       draggable: true,
@@ -175,7 +176,8 @@ class Rtab extends React.Component {
     return tabs
   };
 
-  renderPanel = (models) => {
+  renderPanel = () => {
+    let models = this.getModels()
     if (this.state.isDragging) {
       return this.props.panelRenderer(this.state.draggingOnHand.panel, this.state.dragTo)
     }
@@ -200,14 +202,13 @@ class Rtab extends React.Component {
   };
 
   render() {
-    let models = this.getModels()
     return (
       <div className="Rtab">
         <ol className={cn('tabs', this.props.tabPosition)}>
-          {this.renderTabs(models)}
+          {this.renderTabs()}
         </ol>
         <div className={cn('panelContainer', {preserve: this.props.preserve})}>
-          {this.renderPanel(models)}
+          {this.renderPanel()}
         </div>
       </div>
     )

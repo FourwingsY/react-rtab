@@ -183,7 +183,8 @@ module.exports =
 	      _this.setState({
 	        activeTabIndex: index
 	      });
-	    }, _this.renderTabs = function (models) {
+	    }, _this.renderTabs = function () {
+	      var models = _this.getModels();
 	      var draggableOptions = {};
 	      var defaultDraggableOptions = {
 	        draggable: true,
@@ -217,7 +218,8 @@ module.exports =
 	        );
 	      });
 	      return tabs;
-	    }, _this.renderPanel = function (models) {
+	    }, _this.renderPanel = function () {
+	      var models = _this.getModels();
 	      if (_this.state.isDragging) {
 	        return _this.props.panelRenderer(_this.state.draggingOnHand.panel, _this.state.dragTo);
 	      }
@@ -262,19 +264,18 @@ module.exports =
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      var models = this.getModels();
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'Rtab' },
 	        _react2.default.createElement(
 	          'ol',
 	          { className: (0, _classnames2.default)('tabs', this.props.tabPosition) },
-	          this.renderTabs(models)
+	          this.renderTabs()
 	        ),
 	        _react2.default.createElement(
 	          'div',
 	          { className: (0, _classnames2.default)('panelContainer', { preserve: this.props.preserve }) },
-	          this.renderPanel(models)
+	          this.renderPanel()
 	        )
 	      );
 	    }
