@@ -335,7 +335,7 @@ module.exports =
 /* 5 */
 /***/ function(module, exports) {
 
-	module.exports = require("React");
+	module.exports = require("react");
 
 /***/ },
 /* 6 */

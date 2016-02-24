@@ -33,7 +33,7 @@ module.exports = {
     new ExtractTextPlugin("[name].css")
   ],
   externals: {
-    react: "React",
+    react: "react",
     classnames: "classnames"
   },
   postcss: function () {
