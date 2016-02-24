@@ -16,11 +16,13 @@ module.exports = {
   entry: entries,
   output: {
     filename: 'react-rtab.js',
-    path: './dist'
+    path: './dist',
+    library: true,
+    libraryTarget: 'commonjs2'
   },
   module: {
     loaders: [
-      {test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/, include: /src/},
+      {test: /\.js$/, loader: 'babel-loader'},
       {test: /\.pcss$/, loader: ExtractTextPlugin.extract('style-loader','css-loader!postcss-loader')},
     ]
   },
@@ -30,7 +32,10 @@ module.exports = {
   plugins: [
     new ExtractTextPlugin("[name].css")
   ],
-  externals: fs.readdirSync("node_modules"),
+  externals: {
+    react: "React",
+    classnames: "classnames"
+  },
   postcss: function () {
     return [autoprefixer, precss];
   }
